@@ -4,6 +4,7 @@ import { gql } from "@apollo/client";
 import './style/index.css';
 import { useQuery } from "@apollo/client"; // แก้ไขการ import
 import React from "react";
+import Link from "next/link";
 const query = gql`
 query pokemons($first: Int!){
   pokemons(first: $first){
@@ -62,17 +63,17 @@ export default function ListUsers() {
     });
 
   return (
-    <main style={{ maxWidth: 1200, marginInline: "auto", padding: 20 }}>
-      <div style={{ marginBottom: "4rem", textAlign: "center" }}>
-        <h4 style={{ marginBottom: 16 }}>{count}</h4>
-        <button onClick={() => setCount((prev) => prev + 1)}>increment</button>
-        <button
+    <main style={{ maxWidth: 1200, marginInline: "auto", padding: 0 }}>
+      <div style={{ marginBottom: "2rem", textAlign: "center" }}>
+        <h4 className="count" style={{ marginBottom: 16 }}>{count}</h4>
+        <button className="btn" onClick={() => setCount((prev) => prev + 1)}>increment</button>
+        <button className="btn" 
           onClick={() => setCount((prev) => prev - 1)}
           style={{ marginInline: 16 }}
         >
           decrement
         </button>
-        <button onClick={() => setCount(0)}>reset</button>
+        <button className="btn"  onClick={() => setCount(0)}>reset</button>
       </div>
 
       {error ? (
@@ -86,8 +87,12 @@ export default function ListUsers() {
           }}
         >
           {data?.pokemons.map((pokemon) => (
-            <div
-              id="pokemon-Card"
+            <Link
+        
+            href={pokemon.image}
+            target="_blank"
+            rel="noreferrer"
+              id="pokemon-card"
               key={pokemon.id}
               style={{ border: "2px solid skyblue", borderRadius: "10px", textAlign: "center" }}
             >
@@ -97,9 +102,9 @@ export default function ListUsers() {
                 style={{ height: 180, width: 180 }}
               />
               <h3>{pokemon.name}</h3>
-              <h4>{pokemon.types}</h4>
-              <h4>{pokemon.weaknesses}</h4>
-            </div>
+              <h5>{pokemon.types}</h5>
+              <h5>{pokemon.weaknesses}</h5>
+            </Link>
           ))}
         </div>
       ) : null}

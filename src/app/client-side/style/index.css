@@ -1,5 +1,53 @@
-#pokemon-Card:hover {
+#pokemon-card:hover {
   scale: 1.2;
+  transform: 0.1s;
+  cursor: pointer;
+  transition: .2s;
+}
+#pokemon-card {
+  padding-top: 10px;
+  scale: 1;
   transform: 0.4s;
   cursor: pointer;
+  transition: .14s;
+  text-decoration: none;
+  background-color: white;
+}
+
+#pokemon-card > h3{
+  font-weight: bold;
+  color: #4169e1;
+}
+#pokemon-card {
+  font-weight: bold;
+  color: black;
+}
+.btn{
+  padding: 6px 12px;
+  background-color: #4169e1;
+  border: #4169e1;
+  font-size: 24px;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  transform: .5s;
+}
+.btn:hover{
+  cursor: pointer;
+  scale: 1.1;
+  transform: .5s;
+}
+.count{
+  font-size: 64px;
+  font-weight: bold;
+  color: black;
+}
+
+
+
+
+
+
+body{
+  background-color: antiquewhite;
 }
